@@ -6,91 +6,55 @@
   <title>Contact — Beyond Limit</title>
   <link rel="icon" type="image/svg+xml" href="assets/images/logos/beyondlimit-icon.svg" />
   <style>
-    /* Reset */
-    * { margin: 0; padding: 0; box-sizing: border-box; }
-
     body {
       font-family: 'Poppins', sans-serif;
       background: #373431;
       color: #fff;
-      overflow-x: hidden;
-      position: relative;
+      margin: 0;
       min-height: 100vh;
       display: flex;
       flex-direction: column;
-    }
-
-    /* Seamless calm background lines */
-    body::before {
-      content: "";
-      position: fixed; inset: 0;
-      background: repeating-linear-gradient(
-        -45deg,
-        rgba(186,147,69,0.05) 0px,
-        rgba(186,147,69,0.05) 1px,
-        transparent 1px,
-        transparent 120px
-      );
-      animation: moveLines 80s linear infinite;
-      opacity: 0.25;
-      z-index: -1;
-      pointer-events: none;
-    }
-    @keyframes moveLines {
-      0% { background-position: 0 0; }
-      100% { background-position: 600px 600px; }
     }
 
     /* Navbar */
     nav {
       position: fixed;
       top: 0;
+      left: 0;
       width: 100%;
+      height: 70px;
       display: flex;
       justify-content: flex-end;
       align-items: center;
-      padding: 20px 60px; /* extra padding */
+      padding: 0 60px;
       background: transparent;
       z-index: 100;
+      box-sizing: border-box;
     }
-
     nav a {
       position: relative;
+      white-space: nowrap;
       color: #fff;
       text-decoration: none;
-      margin-left: 30px; /* spacing between links */
+      margin-left: 30px;
       font-weight: 500;
       transition: color .3s ease;
     }
+    nav a:hover { color: #ba9345; }
 
-    nav a::after {
-      content: "";
-      position: absolute;
-      left: 0;
-      bottom: -4px;
-      width: 0%;
-      height: 2px;
-      background: #ba9345;
-      transition: width .3s ease;
+    @media (max-width: 768px) {
+      nav { justify-content: center; padding: 0 20px; }
+      nav a { margin-left: 15px; font-size: 0.9rem; }
     }
 
-    nav a:hover {
-      color: #ba9345;
-    }
-
-    nav a:hover::after {
-      width: 100%;
-    }
-
-    /* Contact section */
+    /* Contact */
     .contact {
       flex: 1;
       display: flex;
       justify-content: center;
       align-items: center;
-      padding: 120px 20px 60px; /* account for navbar height */
+      padding: 120px 20px 60px;
     }
-
     .contact-form {
       background: #2a2826;
       padding: 40px;
@@ -99,21 +63,12 @@
       max-width: 500px;
       box-shadow: 0 8px 20px rgba(0,0,0,.5);
     }
-
     .contact-form h2 {
       color: #ba9345;
       margin-bottom: 25px;
       text-align: center;
-      font-size: 1.8rem;
     }
-
-    .contact-form label {
-      display: block;
-      margin-bottom: 6px;
-      font-size: 0.9rem;
-      color: #ddd;
-    }
-
+    .contact-form label { display: block; margin-bottom: 6px; color: #ddd; }
     .contact-form input,
     .contact-form textarea {
       width: 100%;
@@ -123,12 +78,7 @@
       border-radius: 8px;
       font-size: 1rem;
     }
-
-    .contact-form textarea {
-      min-height: 120px;
-      resize: vertical;
-    }
-
+    .contact-form textarea { min-height: 120px; resize: vertical; }
     .contact-form button {
       background: #ba9345;
       color: #fff;
@@ -136,14 +86,20 @@
       padding: 14px;
       width: 100%;
       border-radius: 8px;
-      font-size: 1rem;
       cursor: pointer;
-      transition: background .3s ease;
+      font-size: 1rem;
     }
+    .contact-form button:hover { background: #a78238; }
 
-    .contact-form button:hover {
-      background: #a78238;
+    /* Messages */
+    .form-message {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 0.95rem;
+      display: none;
     }
+    .form-message.success { color: #4CAF50; }
+    .form-message.error { color: #f44336; }
 
     /* Footer */
     footer {
@@ -153,45 +109,79 @@
       font-size: 0.9rem;
       color: #aaa;
     }
-    footer span {
-      display: block;
-      margin-top: 5px;
-      color: #ba9345;
+    footer span { display: block; margin-top: 5px; color: #ba9345; }
+
+    /* Mobile optimization */
+    @media (max-width: 600px) {
+      .contact { padding: 100px 15px 40px; }
+      .contact-form { padding: 25px; border-radius: 12px; }
+      .contact-form h2 { font-size: 1.4rem; }
+      .contact-form input,
+      .contact-form textarea { font-size: 0.95rem; padding: 10px; }
+      .contact-form button { padding: 12px; font-size: 0.95rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Navbar -->
   <nav>
     <a href="index.html#about">About Beyond Limit</a>
     <a href="contact.html">Contact</a>
     <a href="https://beyondlimitnas.tail7b7958.ts.net/" target="_blank">Admin Portal</a>
   </nav>
 
-  <!-- Contact Section -->
   <section class="contact">
-    <form class="contact-form" action="https://formspree.io/f/xldwverg" method="POST">
+    <form id="contactForm" class="contact-form">
       <h2>Contact Us</h2>
 
       <label for="name">Name</label>
       <input type="text" id="name" name="name" required>
 
       <label for="email">Email</label>
-      <input type="email" id="email" name="_replyto" required>
+      <input type="email" id="email" name="email" required>
 
       <label for="message">Message</label>
       <textarea id="message" name="message" required></textarea>
 
       <button type="submit">Send Message</button>
+
+      <div id="formSuccess" class="form-message success">✅ Thank you! Your message has been sent.</div>
+      <div id="formError" class="form-message error">❌ Please fill out all fields correctly.</div>
     </form>
   </section>
 
-  <!-- Footer -->
   <footer>
     © 2025 Beyond Limit
     <span>Managing Properties, Maximizing Value</span>
   </footer>
 
+  <script>
+    const form = document.getElementById("contactForm");
+    const successMsg = document.getElementById("formSuccess");
+    const errorMsg = document.getElementById("formError");
+
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      successMsg.style.display = "none";
+      errorMsg.style.display = "none";
+
+      try {
+        const res = await fetch("https://formspree.io/f/xldwverg", {
+          method: "POST",
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          successMsg.style.display = "block";
+          form.reset();
+        } else {
+          errorMsg.style.display = "block";
+        }
+      } catch (err) {
+        errorMsg.style.display = "block";
+      }
+    });
+  </script>
 </body>
 </html>
