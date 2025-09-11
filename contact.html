@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Contact — Beyond Limit</title>
+  <link rel="icon" href="assets/images/logos/beyondlimit-icon.svg" type="image/svg+xml">
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #373431;
+      color: #fff;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    nav {
+      position: fixed; top: 0; width: 100%;
+      display: flex; justify-content: flex-end;
+      padding: 20px 40px;
+      z-index: 100;
+    }
+    nav a {
+      position: relative;
+      color: #fff;
+      text-decoration: none;
+      margin-left: 20px;
+      font-weight: 500;
+      transition: color .3s ease;
+    }
+    nav a::after {
+      content: "";
+      position: absolute;
+      left: 0; bottom: -4px;
+      width: 0%; height: 2px;
+      background: #ba9345;
+      transition: width .3s ease;
+    }
+    nav a:hover { color: #ba9345; }
+    nav a:hover::after { width: 100%; }
+
+    .contact {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 120px 20px 40px; /* was 80px → now 120px */
+    }
+    
+
+    .contact-form {
+      background: #2a2826;
+      padding: 30px;
+      border-radius: 10px;
+      max-width: 500px;
+      width: 100%;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+    }
+
+    .contact-form h2 {
+      margin-bottom: 20px;
+      color: #ba9345;
+      text-align: center;
+    }
+
+    .contact-form label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+    }
+
+    .contact-form input,
+    .contact-form textarea {
+      width: 100%;
+      padding: 10px;
+      margin-bottom: 15px;
+      border: none;
+      border-radius: 5px;
+      font-family: inherit;
+    }
+
+    .contact-form textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .contact-form button {
+      background: #ba9345;
+      border: none;
+      padding: 12px 20px;
+      color: #fff;
+      font-weight: 600;
+      border-radius: 5px;
+      cursor: pointer;
+      width: 100%;
+      transition: background .3s ease;
+    }
+
+    .contact-form button:hover {
+      background: #d4b46c;
+    }
+
+    footer {
+      background: #2a2826;
+      text-align: center;
+      padding: 15px;
+      font-size: 0.9rem;
+      color: #ccc;
+    }
+    footer .slogan {
+      color: #ba9345;
+      font-weight: 500;
+    }
+
+    @media (max-width: 768px) {
+      nav { justify-content: center; padding: 15px 20px; }
+      nav a { margin: 0 10px; font-size: 0.95rem; }
+      .contact-form { padding: 20px; }
+    }
+  </style>
+</head>
+<body>
+
+  <nav>
+    <a href="index.html#about">About Beyond Limit</a>
+    <a href="contact.html">Contact</a>
+    <a href="https://beyondlimitnas.tail7b7958.ts.net/" target="_blank">Admin Portal</a>
+  </nav>
+
+  <section class="contact">
+    <form class="contact-form">
+      <h2>Contact Us</h2>
+      <label for="name">Name</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="message">Message</label>
+      <textarea id="message" name="message" required></textarea>
+
+      <button type="submit">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>© 2025 Beyond Limit</p>
+    <p class="slogan">Managing Properties, Maximizing Value</p>
+  </footer>
+
+</body>
+</html>
