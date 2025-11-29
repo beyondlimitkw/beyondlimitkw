@@ -3,105 +3,314 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact — Beyond Limit</title>
+  <title>Contact – Beyond Limit</title>
   <link rel="icon" type="image/svg+xml" href="assets/images/logos/beyondlimit-icon.svg" />
+
   <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    html, body {
+      height: 100%;
+    }
+
     body {
       font-family: 'Poppins', sans-serif;
       background: #373431;
       color: #fff;
-      margin: 0;
+      overflow-x: hidden;
+      overflow-y: auto;
+      position: relative;
       min-height: 100vh;
+    }
+
+    /* Background lines */
+    body::before {
+      content: "";
+      position: fixed; inset: 0;
+      background: repeating-linear-gradient(
+        -45deg,
+        rgba(186,147,69,0.05) 0px,
+        rgba(186,147,69,0.05) 1px,
+        transparent 1px,
+        transparent 120px
+      );
+      animation: moveLines 80s linear infinite;
+      opacity: 0.25;
+      z-index: -1;
+    }
+    @keyframes moveLines {
+      0% { background-position: 0 0; }
+      100% { background-position: 600px 600px; }
+    }
+
+    /* === LEFT VERTICAL NAVBAR (same as index) === */
+    .side-nav {
+      position: fixed;
+      left: 26px;
+      top: 50%;
+      transform: translateY(-50%);
       display: flex;
       flex-direction: column;
+      gap: 18px;
+      z-index: 100;
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
     }
 
-    /* Navbar */
-    nav {
-      position: fixed;
+    .side-nav::before {
+      content: "";
+      position: absolute;
+      left: -10px;
       top: 0;
-      left: 0;
-      width: 100%;
-      height: 70px;
-      display: flex;
-      justify-content: flex-end;
-      align-items: center;
-      padding: 0 60px;
-      background: transparent;
-      z-index: 100;
-      box-sizing: border-box;
+      bottom: 0;
+      width: 1px;
+      background: linear-gradient(
+        to bottom,
+        rgba(186,147,69,0),
+        rgba(186,147,69,0.8),
+        rgba(186,147,69,0)
+      );
+      opacity: 0.7;
     }
-    nav a {
-      position: relative;
-      white-space: nowrap;
+
+    .side-nav-brand {
       color: #fff;
-      text-decoration: none;
-      margin-left: 30px;
       font-weight: 500;
-      transition: color .3s ease;
+      margin-bottom: 8px;
+      opacity: 0.9;
     }
-    nav a:hover { color: #ba9345; }
+
+    .side-nav-brand span {
+      color: #ba9345;
+    }
+
+    .side-nav a {
+      color: #bfbfbf;
+      text-decoration: none;
+      position: relative;
+      padding-left: 2px;
+      transition: color 0.2s ease, transform 0.2s ease;
+    }
+
+    .side-nav a::after {
+      content: "";
+      position: absolute;
+      left: -6px;
+      top: 50%;
+      transform: translateY(-50%);
+      width: 4px;
+      height: 4px;
+      border-radius: 50%;
+      background: transparent;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+
+    .side-nav a:hover {
+      color: #ffffff;
+      transform: translateX(3px);
+    }
+
+    .side-nav a:hover::after {
+      background: #ba9345;
+      transform: translateY(-50%) scale(1.2);
+    }
+
+    .side-nav a.active {
+      color: #ffffff;
+    }
+    .side-nav a.active::after {
+      background: #ba9345;
+    }
 
     @media (max-width: 768px) {
-      nav { justify-content: center; padding: 0 20px; }
-      nav a { margin-left: 15px; font-size: 0.9rem; }
+      .side-nav {
+        top: 18px;
+        left: 50%;
+        transform: translateX(-50%);
+        flex-direction: row;
+        align-items: center;
+        gap: 14px;
+        background: rgba(0,0,0,0.35);
+        padding: 8px 14px;
+        border-radius: 999px;
+        backdrop-filter: blur(10px);
+      }
+
+      .side-nav::before {
+        display: none;
+      }
+
+      .side-nav-brand {
+        display: none;
+      }
     }
 
-    /* Contact */
-    .contact {
-      flex: 1;
+    /* CONTACT PAGE LAYOUT */
+    .contact-page {
+      min-height: 100vh;
       display: flex;
-      justify-content: center;
       align-items: center;
-      padding: 120px 20px 60px;
+      justify-content: center;
+      padding: 60px 20px;
     }
-    .contact-form {
-      background: #2a2826;
-      padding: 40px;
-      border-radius: 16px;
+
+    .contact-inner {
+      max-width: 780px;
       width: 100%;
-      max-width: 500px;
-      box-shadow: 0 8px 20px rgba(0,0,0,.5);
-    }
-    .contact-form h2 {
-      color: #ba9345;
-      margin-bottom: 25px;
       text-align: center;
     }
-    .contact-form label { display: block; margin-bottom: 6px; color: #ddd; }
+
+    .contact-eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.18em;
+      font-size: 0.75rem;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 10px;
+    }
+
+    .contact-title {
+      font-size: 2rem;
+      margin-bottom: 14px;
+      color: #ffffff;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .contact-text {
+      font-size: 1rem;
+      line-height: 1.7;
+      color: #dddddd;
+      margin-bottom: 30px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+      margin-bottom: 32px;
+    }
+
+    .contact-item {
+      font-size: 0.9rem;
+      line-height: 1.6;
+      color: #d4d4d4;
+    }
+
+    .contact-label {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.16em;
+      color: rgba(255,255,255,0.7);
+      margin-bottom: 6px;
+    }
+
+    .contact-value {
+      color: #ffffff;
+    }
+
+    .contact-value a {
+      color: #ba9345;
+      text-decoration: none;
+    }
+
+    .contact-value a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 768px) {
+      .contact-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+      }
+    }
+
+    /* Form */
+    .contact-form {
+      max-width: 480px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .contact-form-row {
+      margin-bottom: 14px;
+    }
+
+    .contact-form label {
+      display: block;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 4px;
+      color: rgba(255,255,255,0.8);
+    }
+
     .contact-form input,
     .contact-form textarea {
       width: 100%;
-      padding: 12px;
-      margin-bottom: 18px;
-      border: none;
       border-radius: 8px;
-      font-size: 1rem;
+      border: 1px solid rgba(255,255,255,0.25);
+      background: rgba(0,0,0,0.35);
+      color: #ffffff;
+      padding: 10px 12px;
+      font-family: inherit;
+      font-size: 0.9rem;
+      outline: none;
+      transition: border-color 0.2s ease, background 0.2s ease;
     }
-    .contact-form textarea { min-height: 120px; resize: vertical; }
-    .contact-form button {
-      background: #ba9345;
-      color: #fff;
-      border: none;
-      padding: 14px;
-      width: 100%;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1rem;
-    }
-    .contact-form button:hover { background: #a78238; }
 
-    /* Messages */
+    .contact-form input:focus,
+    .contact-form textarea:focus {
+      border-color: #ba9345;
+      background: rgba(0,0,0,0.5);
+    }
+
+    .contact-form textarea {
+      min-height: 100px;
+      resize: vertical;
+    }
+
+    .contact-submit {
+      margin-top: 6px;
+      text-align: right;
+    }
+
+    .btn-gold {
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 999px;
+      border: 1px solid #ba9345;
+      background: #ba9345;
+      color: #111;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      font-weight: 600;
+      cursor: pointer;
+      transition: background 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+    }
+
+    .btn-gold:hover {
+      background: #d4af55;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.45);
+      transform: translateY(-1px);
+    }
+
+    /* Form feedback messages */
     .form-message {
-      margin-top: 15px;
-      text-align: center;
-      font-size: 0.95rem;
+      margin-top: 10px;
+      font-size: 0.85rem;
       display: none;
     }
-    .form-message.success { color: #4CAF50; }
-    .form-message.error { color: #f44336; }
 
-    /* Footer */
+    .form-success {
+      color: #8ae68a;
+    }
+
+    .form-error {
+      color: #ffb3b3;
+    }
+
     footer {
       background: #2a2826;
       text-align: center;
@@ -109,46 +318,91 @@
       font-size: 0.9rem;
       color: #aaa;
     }
-    footer span { display: block; margin-top: 5px; color: #ba9345; }
-
-    /* Mobile optimization */
-    @media (max-width: 600px) {
-      .contact { padding: 100px 15px 40px; }
-      .contact-form { padding: 25px; border-radius: 12px; }
-      .contact-form h2 { font-size: 1.4rem; }
-      .contact-form input,
-      .contact-form textarea { font-size: 0.95rem; padding: 10px; }
-      .contact-form button { padding: 12px; font-size: 0.95rem; }
+    footer span {
+      display: block;
+      margin-top: 5px;
+      color: #ba9345;
     }
   </style>
 </head>
 <body>
 
-  <nav>
-    <a href="index.html#about">About Beyond Limit</a>
-    <a href="contact.html">Contact</a>
-    <a href="https://beyondlimitnas.tail7b7958.ts.net/" target="_blank">Admin Portal</a>
-  </nav>
+  <!-- LEFT VERTICAL NAV -->
+  <div class="side-nav">
+    <div class="side-nav-brand">BEYOND <span>LIMIT</span></div>
+    <a href="index.html#hero">Home</a>
+    <a href="index.html#about">About</a>
+    <a href="#contact" class="active">Contact</a>
+    <a href="https://beyondlimitnas.tail7b7958.ts.net/" target="_blank">Admin</a>
+  </div>
 
-  <section class="contact">
-    <form id="contactForm" class="contact-form">
-      <h2>Contact Us</h2>
+  <main class="contact-page" id="contact">
+    <div class="contact-inner">
+      <div class="contact-eyebrow">Get in touch</div>
+      <h1 class="contact-title">Contact Beyond Limit</h1>
+      <p class="contact-text">
+        For property management, rent visibility or building operations,
+        reach out and we’ll get back to you as soon as possible.
+      </p>
 
-      <label for="name">Name</label>
-      <input type="text" id="name" name="name" required>
+      <div class="contact-grid">
+        <div class="contact-item">
+          <div class="contact-label">Email</div>
+          <div class="contact-value">
+            <a href="mailto:info@beyondlimitkw.com">info@beyondlimitkw.com</a>
+          </div>
+        </div>
 
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email" required>
+        <div class="contact-item">
+          <div class="contact-label">Phone</div>
+          <div class="contact-value">
+            +965 9981 8992
+          </div>
+        </div>
 
-      <label for="message">Message</label>
-      <textarea id="message" name="message" required></textarea>
+        <div class="contact-item">
+          <div class="contact-label">Location</div>
+          <div class="contact-value">
+            Jabriya, Kuwait<br/>
+            (Clover Tower)
+          </div>
+        </div>
+      </div>
 
-      <button type="submit">Send Message</button>
+      <!-- Formspree form -->
+      <form
+        id="contactForm"
+        class="contact-form"
+        method="POST"
+      >
+        <div class="contact-form-row">
+          <label for="name">Name</label>
+          <input id="name" name="name" type="text" placeholder="Your name" required />
+        </div>
 
-      <div id="formSuccess" class="form-message success">✅ Thank you! Your message has been sent.</div>
-      <div id="formError" class="form-message error">❌ Please fill out all fields correctly.</div>
-    </form>
-  </section>
+        <div class="contact-form-row">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="you@example.com" required />
+        </div>
+
+        <div class="contact-form-row">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" placeholder="How can we help?" required></textarea>
+        </div>
+
+        <div class="contact-submit">
+          <button type="submit" class="btn-gold">Send</button>
+        </div>
+
+        <div id="formSuccess" class="form-message form-success">
+          Thank you — your message has been sent.
+        </div>
+        <div id="formError" class="form-message form-error">
+          Something went wrong. Please try again.
+        </div>
+      </form>
+    </div>
+  </main>
 
   <footer>
     © 2025 Beyond Limit
