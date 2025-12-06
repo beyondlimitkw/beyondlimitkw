@@ -8,20 +8,19 @@
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    html, body {
-      height: 100%;
-    }
+    html, body { height: 100%; }
+
     body {
       font-family: 'Poppins', sans-serif;
       background: #373431;
       color: #fff;
       overflow-x: hidden;
       overflow-y: auto;
-      position: relative;
       min-height: 100vh;
+      position: relative;
     }
 
-    /* Background lines (same style as other pages) */
+    /* Background lines */
     body::before {
       content: "";
       position: fixed; inset: 0;
@@ -41,7 +40,7 @@
       100% { background-position: 600px 600px; }
     }
 
-    /* LEFT VERTICAL NAV (same structure as index/contact) */
+    /* SIDE NAV (same language as rest of site) */
     .side-nav {
       position: fixed;
       left: 26px;
@@ -87,6 +86,7 @@
       padding-left: 2px;
       transition: color 0.2s ease, transform 0.2s ease;
     }
+
     .side-nav a::after {
       content: "";
       position: absolute;
@@ -99,17 +99,21 @@
       background: transparent;
       transition: background 0.2s ease, transform 0.2s ease;
     }
+
     .side-nav a:hover {
       color: #ffffff;
       transform: translateX(3px);
     }
+
     .side-nav a:hover::after {
       background: #ba9345;
       transform: translateY(-50%) scale(1.2);
     }
+
     .side-nav a.active {
       color: #ffffff;
     }
+
     .side-nav a.active::after {
       background: #ba9345;
     }
@@ -138,372 +142,196 @@
       padding: 80px 24px 40px;
     }
 
-    .lab-hero {
+    .lab-layout {
       display: grid;
-      grid-template-columns: minmax(0, 2.1fr) minmax(0, 1.4fr);
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.6fr);
       gap: 40px;
       align-items: center;
-      margin-bottom: 60px;
-    }
-
-    .lab-eyebrow {
-      text-transform: uppercase;
-      letter-spacing: 0.22em;
-      font-size: 0.72rem;
-      color: rgba(255,255,255,0.7);
-      margin-bottom: 8px;
-    }
-
-    .lab-title {
-      font-size: 2.4rem;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .lab-tagline {
-      font-size: 1.05rem;
-      line-height: 1.7;
-      color: #dddddd;
-      margin-bottom: 14px;
-    }
-
-    .lab-note {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.7);
-    }
-
-    .lab-badge-card {
-      border-radius: 24px;
-      border: 1px solid rgba(186,147,69,0.6);
-      background: radial-gradient(circle at top left, rgba(186,147,69,0.18), rgba(0,0,0,0.85));
-      padding: 20px 22px;
-      box-shadow: 0 18px 40px rgba(0,0,0,0.55);
-    }
-    .lab-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(0,0,0,0.55);
-      border: 1px solid rgba(255,255,255,0.12);
-      font-size: 0.75rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-      color: #f5f5f5;
-    }
-    .lab-badge span {
-      width: 10px;
-      height: 10px;
-      border-radius: 50%;
-      background: #ba9345;
-      box-shadow: 0 0 10px rgba(186,147,69,0.8);
-    }
-    .lab-badge-card h3 {
-      font-size: 1.1rem;
-      margin-bottom: 4px;
-    }
-    .lab-badge-card p {
-      font-size: 0.9rem;
-      color: #e8e8e8;
-      line-height: 1.6;
-    }
-
-    /* APPS SECTION */
-    .apps-section-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-end;
-      gap: 16px;
-      margin-bottom: 18px;
-    }
-    .apps-section-header h2 {
-      font-size: 1.3rem;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-    }
-    .apps-section-header p {
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.7);
-    }
-
-    .apps-grid {
-      display: grid;
-      grid-template-columns: minmax(0, 1.45fr) minmax(0, 1fr);
-      gap: 22px;
     }
 
     @media (max-width: 900px) {
-      .lab-hero {
+      .lab-layout {
         grid-template-columns: 1fr;
-      }
-      .apps-grid {
-        grid-template-columns: 1fr;
+        gap: 32px;
       }
     }
 
-    .app-card-main,
-    .app-card-secondary {
-      border-radius: 20px;
-      border: 1px solid rgba(186,147,69,0.3);
-      background: rgba(0,0,0,0.4);
-      backdrop-filter: blur(14px);
-      padding: 18px 18px 20px;
-      box-shadow: 0 18px 32px rgba(0,0,0,0.5);
+    /* LEFT SIDE: IDENTITY + TEXT */
+    .identity-block {
+      max-width: 520px;
     }
 
-    .app-header {
+    .monogram-row {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 16px;
-      margin-bottom: 14px;
+      gap: 12px;
+      margin-bottom: 18px;
     }
 
-    .app-title-block {
-      display: flex;
-      flex-direction: column;
-      gap: 4px;
-      align-items: flex-start;
+    .monogram {
+      width: 42px;
+      height: 42px;
+      border-radius: 50%;
+      background: radial-gradient(circle at 30% 0%, #f9e3a3, #ba9345);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-size:0.9rem;
+      font-weight:600;
+      color:#111;
+      box-shadow:0 0 18px rgba(186,147,69,.6);
     }
 
-    .app-name {
-      font-size: 1.3rem;
-      font-weight: 600;
-    }
-    .app-tagline {
-      font-size: 0.88rem;
-      color: rgba(255,255,255,0.75);
+    .monogram-text {
+      display:flex;
+      flex-direction:column;
     }
 
-    .app-pill {
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(186,147,69,0.8);
+    .monogram-label-top {
       font-size: 0.7rem;
-      letter-spacing: 0.14em;
       text-transform: uppercase;
-      color: #f5f5f5;
-      background: rgba(0,0,0,0.7);
+      letter-spacing: 0.18em;
+      color: rgba(255,255,255,0.7);
+    }
+    .monogram-label-bottom {
+      font-size: 0.86rem;
+      color: #ffffff;
     }
 
-    .app-body {
-      display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
-      gap: 18px;
-      align-items: stretch;
+    .title {
+      font-size: 2.1rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
     }
 
-    @media (max-width: 720px) {
-      .app-body {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .app-text {
-      font-size: 0.9rem;
-      color: #e4e4e4;
+    .subtitle {
+      font-size: 0.96rem;
+      color: #dcdcdc;
       line-height: 1.7;
+      margin-bottom: 20px;
     }
 
-    .app-highlights {
-      margin-top: 8px;
-      font-size: 0.85rem;
-      color: rgba(255,255,255,0.8);
-    }
-    .app-highlights ul {
-      margin-top: 6px;
-      padding-left: 16px;
+    .note {
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.7);
+      line-height: 1.6;
     }
 
-    .app-preview {
-      border-radius: 18px;
-      border: 1px solid rgba(255,255,255,0.06);
-      background: radial-gradient(circle at top, rgba(255,255,255,0.08), rgba(0,0,0,0.9));
-      padding: 14px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
+    /* RIGHT SIDE: CUSTOM LOGO STRIP */
+    .apps-block {
       position: relative;
-      overflow: hidden;
+      padding: 10px 0 20px;
     }
-    .phone-frame {
-      width: 150px;
-      max-width: 70%;
-      aspect-ratio: 9 / 19;
-      border-radius: 26px;
-      border: 2px solid rgba(255,255,255,0.6);
-      background: linear-gradient(135deg, #111, #23201c);
-      box-shadow: 0 18px 34px rgba(0,0,0,0.8);
-      position: relative;
-      overflow: hidden;
-    }
-    .phone-screen {
+
+    /* Golden line that logos float above */
+    .apps-line {
       position: absolute;
-      inset: 6px;
-      border-radius: 20px;
-      background: radial-gradient(circle at top, rgba(186,147,69,0.45), #111);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.8rem;
-      text-align: center;
-      padding: 10px;
-      color: #fefefe;
+      top: 50%;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(
+        to right,
+        transparent,
+        rgba(186,147,69,0.9),
+        transparent
+      );
+      opacity: 0.75;
+      pointer-events: none;
     }
 
-    .app-actions {
-      margin-top: 14px;
+    .apps-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.2em;
+      color: rgba(255,255,255,0.75);
+      margin-bottom: 18px;
+      text-align: right;
+    }
+
+    .apps-logos {
+      position: relative;
       display: flex;
       flex-wrap: wrap;
-      gap: 10px;
+      justify-content: flex-end;
+      gap: 26px;
+      padding-top: 16px;
     }
 
-    .btn,
-    .btn-ghost {
-      display: inline-flex;
+    .app-logo-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      color: white;
+      position: relative;
+      transform: translateY(0);
+      transition: transform 0.18s ease, filter 0.18s ease;
+    }
+
+    .app-logo-item:hover {
+      transform: translateY(-4px);
+      filter: drop-shadow(0 8px 18px rgba(0,0,0,0.6));
+    }
+
+    .app-logo-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 0%, rgba(249,227,163,0.9), rgba(186,147,69,0.9)),
+        radial-gradient(circle at center, rgba(0,0,0,0.8), rgba(0,0,0,1));
+      display: flex;
       align-items: center;
       justify-content: center;
-      gap: 6px;
-      padding: 9px 18px;
-      border-radius: 999px;
-      font-size: 0.8rem;
-      text-transform: uppercase;
-      letter-spacing: 0.13em;
-      text-decoration: none;
-      cursor: pointer;
-      transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease, border-color 0.15s ease;
-      white-space: nowrap;
-    }
-
-    .btn {
-      background: #ba9345;
-      border: 1px solid #ba9345;
-      color: #111;
-      font-weight: 600;
-    }
-    .btn:hover {
-      background: #d4af55;
-      box-shadow: 0 12px 26px rgba(0,0,0,0.6);
-      transform: translateY(-1px);
-    }
-
-    .btn-ghost {
-      background: rgba(0,0,0,0.45);
-      border: 1px solid rgba(186,147,69,0.75);
-      color: #f5f5f5;
-    }
-    .btn-ghost:hover {
-      background: rgba(186,147,69,0.16);
-      box-shadow: 0 10px 22px rgba(0,0,0,0.6);
-      transform: translateY(-1px);
-    }
-
-    /* Secondary app card (for future apps / coming soon) */
-    .app-card-secondary h3 {
-      font-size: 1.05rem;
-      margin-bottom: 6px;
-    }
-    .app-card-secondary p {
-      font-size: 0.87rem;
-      color: rgba(255,255,255,0.8);
-      line-height: 1.6;
-      margin-bottom: 12px;
-    }
-    .coming-pill {
-      display: inline-block;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px dashed rgba(186,147,69,0.7);
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      color: rgba(255,255,255,0.8);
-      margin-bottom: 8px;
-    }
-
-    /* FOOTER (right aligned like other pages) */
-    footer {
-      width: 100%;
-      padding: 24px 32px 28px;
-      background: transparent;
+      border: 2px solid rgba(255,255,255,0.18);
+      overflow: hidden;
       position: relative;
-      display: flex;
-      justify-content: flex-end;
-      box-sizing: border-box;
-      margin-top: 48px;
     }
-    footer::before {
+
+    .app-logo-circle::after {
       content: "";
       position: absolute;
-      right: 32px;
-      top: 4px;
-      width: 140px;
-      height: 1px;
-      background: linear-gradient(to left, #ba9345, transparent);
-      opacity: 0.7;
-      transform: rotate(-3deg);
-      transform-origin: right center;
+      inset: 0;
+      background: radial-gradient(circle at top, rgba(255,255,255,0.25), transparent);
+      mix-blend-mode: soft-light;
+      pointer-events: none;
     }
-    .footer-main {
-      text-align: right;
-      font-size: 0.82rem;
-      color: #e0e0e0;
+
+    .app-logo-circle img {
+      width: 72%;
+      height: 72%;
+      object-fit: contain;
+      z-index: 1;
     }
-    .footer-main span {
-      display: block;
-      margin-top: 4px;
-      color: #ba9345;
-      font-size: 0.72rem;
-      letter-spacing: 0.18em;
+
+    .app-logo-name {
+      font-size: 0.86rem;
+      letter-spacing: 0.06em;
       text-transform: uppercase;
+      text-align: center;
     }
-    .footer-social {
-      margin-top: 8px;
-      display: flex;
-      justify-content: flex-end;
-      gap: 8px;
-    }
-    .footer-social a {
-      width: 26px;
-      height: 26px;
-      border-radius: 999px;
-      border: 1px solid rgba(186,147,69,0.85);
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
+
+    .app-logo-tag {
       font-size: 0.7rem;
-      text-decoration: none;
-      color: #ba9345;
-      background: rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(6px);
-      transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
-    }
-    .footer-social a:hover {
-      background: rgba(186,147,69,0.2);
-      box-shadow: 0 0 12px rgba(186,147,69,0.45);
-      transform: translateY(-1px);
+      color: rgba(255,255,255,0.7);
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
     }
 
     @media (max-width: 600px) {
-      footer {
-        padding: 18px 20px 22px;
-      }
-      footer::before {
-        right: 20px;
-        width: 110px;
-      }
-      .footer-main {
-        font-size: 0.78rem;
+      main { padding-top: 96px; }
+      .apps-logos {
+        justify-content: center;
       }
     }
   </style>
 </head>
 <body>
 
-  <!-- LEFT VERTICAL NAV -->
+  <!-- SIDE NAV -->
   <div class="side-nav">
     <div class="side-nav-brand">BEYOND <span>LIMIT</span></div>
     <a href="index.html#hero">Home</a>
@@ -514,114 +342,64 @@
   </div>
 
   <main>
-    <!-- HERO -->
-    <section class="lab-hero">
-      <div>
-        <div class="lab-eyebrow">Limitless Lab</div>
-        <h1 class="lab-title">Digital tools for real buildings</h1>
-        <p class="lab-tagline">
-          Limitless Lab is the product studio inside Beyond Limit.  
-          We build software that connects owners, admins, and tenants — starting with rent visibility and payment tools.
-        </p>
-        <p class="lab-note">
-          Today, our focus is <strong>Beyond Rent</strong>. This page will grow as we launch more apps under the Beyond Limit ecosystem.
-        </p>
-      </div>
-
-      <div class="lab-badge-card">
-        <div class="lab-badge">
-          <span></span>
-          LIVE INTERNAL PRODUCT
-        </div>
-        <h3>Built for Beyond Limit properties</h3>
-        <p>
-          Beyond Rent is already running in-house to manage rent status, due dates, and payment history across our managed properties.
-        </p>
-      </div>
-    </section>
-
-    <!-- APPS GRID -->
-    <section>
-      <div class="apps-section-header">
-        <h2>Current & Upcoming Apps</h2>
-        <p>More apps will appear here as Limitless Lab ships new tools.</p>
-      </div>
-
-      <div class="apps-grid">
-        <!-- MAIN APP: BEYOND RENT -->
-        <article class="app-card-main" id="beyond-rent">
-          <div class="app-header">
-            <div class="app-title-block">
-              <div class="app-name">Beyond Rent</div>
-              <div class="app-tagline">Simple rent visibility for owners, admins, and tenants.</div>
-            </div>
-            <div class="app-pill">Property &amp; Rent</div>
+    <div class="lab-layout">
+      <!-- LEFT: Identity + short text -->
+      <section class="identity-block">
+        <div class="monogram-row">
+          <div class="monogram">LL</div>
+          <div class="monogram-text">
+            <div class="monogram-label-top">Product Studio</div>
+            <div class="monogram-label-bottom">Limitless Lab by Beyond Limit</div>
           </div>
-
-          <div class="app-body">
-            <div>
-              <p class="app-text">
-                Beyond Rent replaces scattered spreadsheets and WhatsApp messages with a single source of truth.
-                Each tenant sees their current due amount and history, while admins and owners get a live picture
-                of who has paid, who is late, and which units are performing.
-              </p>
-
-              <div class="app-highlights">
-                Highlights:
-                <ul>
-                  <li>Tenant dashboard with live rent status and payment history.</li>
-                  <li>Admin view of all properties, units, and tenants.</li>
-                  <li>Owner insights into cash flow trends and missed payments.</li>
-                  <li>Support for manual marking as paid now, with payment gateway integration planned.</li>
-                </ul>
-              </div>
-
-              <div class="app-actions">
-                <!-- Replace href with real store links later -->
-                <a class="btn" href="#!" aria-disabled="true">Google Play – coming soon</a>
-                <a class="btn-ghost" href="#!" aria-disabled="true">App Store – coming soon</a>
-                <a class="btn-ghost" href="beyond-rent-privacy.html">Privacy Policy</a>
-              </div>
-            </div>
-
-            <div class="app-preview">
-              <div class="phone-frame">
-                <div class="phone-screen">
-                  Beyond Rent<br/>
-                  <span style="font-size:0.7rem; opacity:0.85;">
-                    Sample tenant view with monthly rent, status, and due date.
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </article>
-
-        <!-- SECONDARY CARD: FUTURE APPS -->
-        <article class="app-card-secondary">
-          <div class="coming-pill">Future products</div>
-          <h3>More apps under Limitless Lab</h3>
-          <p>
-            This section will host additional tools — maintenance tracking, owner dashboards,
-            and other products we build to support Beyond Limit’s properties and partners.
-          </p>
-          <p style="font-size:0.8rem; color:rgba(255,255,255,0.75);">
-            When a new app is ready, we’ll add its logo, description, and store links here.
-          </p>
-        </article>
-      </div>
-    </section>
-
-    <footer>
-      <div class="footer-main">
-        © 2025 Beyond Limit
-        <span>Limitless Lab</span>
-        <div class="footer-social">
-          <a href="https://instagram.com/beyondlimitkw" target="_blank" rel="noopener" aria-label="Beyond Limit Instagram">IG</a>
-          <a href="https://wa.me/96599818992" target="_blank" rel="noopener" aria-label="WhatsApp Beyond Limit">WA</a>
         </div>
-      </div>
-    </footer>
+
+        <h1 class="title">Limitless Lab</h1>
+        <p class="subtitle">
+          A focused space where we design and ship the apps that support Beyond Limit’s
+          properties — from rent visibility today to more tools in the future.
+        </p>
+        <p class="note">
+          Tap an app logo on the right to open its own page with screenshots, features,
+          and its privacy policy.
+        </p>
+      </section>
+
+      <!-- RIGHT: Logos only, no dark cards -->
+      <section class="apps-block">
+        <div class="apps-label">Apps</div>
+        <div class="apps-line"></div>
+
+        <div class="apps-logos">
+          <!-- Beyond Rent -->
+          <a class="app-logo-item" href="beyond-rent.html">
+            <div class="app-logo-circle">
+              <!-- Update this path to your real Beyond Rent logo -->
+              <img src="assets/images/apps/beyond-rent-logo.png" alt="Beyond Rent logo">
+            </div>
+            <div class="app-logo-name">Beyond Rent</div>
+            <div class="app-logo-tag">Rent management</div>
+          </a>
+
+          <!-- Future app placeholder -->
+          <a class="app-logo-item" href="#">
+            <div class="app-logo-circle">
+              <img src="assets/images/apps/placeholder.png" alt="Future app">
+            </div>
+            <div class="app-logo-name">Future app</div>
+            <div class="app-logo-tag">Coming soon</div>
+          </a>
+
+          <!-- Another placeholder if you want -->
+          <a class="app-logo-item" href="#">
+            <div class="app-logo-circle">
+              <img src="assets/images/apps/placeholder.png" alt="Future app">
+            </div>
+            <div class="app-logo-name">Reserved</div>
+            <div class="app-logo-tag">To be announced</div>
+          </a>
+        </div>
+      </section>
+    </div>
   </main>
 </body>
 </html>
