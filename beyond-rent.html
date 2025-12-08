@@ -189,7 +189,6 @@
       pointer-events: none;
     }
 
-    /* make the logo look like a real app icon (squircle) */
     .app-logo-circle img {
       width: 72%;
       height: 72%;
@@ -374,7 +373,6 @@
     }
 
     .phone-frame::before {
-      /* top speaker / camera bar */
       content: "";
       position: absolute;
       top: 8px;
@@ -471,6 +469,22 @@
     }
 
     .privacy-note a {
+      color: #f4d390;
+      text-decoration: underline;
+      text-decoration-thickness: 1px;
+      text-underline-offset: 3px;
+    }
+
+    /* NEW: Data deletion note */
+    .deletion-note {
+      margin-top: 10px;
+      font-size: 0.82rem;
+      color: rgba(255,255,255,0.78);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .deletion-note a {
       color: #f4d390;
       text-decoration: underline;
       text-decoration-thickness: 1px;
@@ -579,7 +593,6 @@
       <div>
         <div class="app-identity">
           <div class="app-logo-circle">
-            <!-- update this with your real Beyond Rent icon -->
             <img src="assets/images/apps/beyond-rent-logo.png" alt="Beyond Rent logo">
           </div>
           <div class="app-identity-text">
@@ -604,7 +617,6 @@
         </p>
 
         <div class="app-actions">
-          <!-- Replace #! with real store links once live -->
           <a class="btn" href="#!" aria-disabled="true">Google Play – soon</a>
           <a class="btn-ghost" href="#!" aria-disabled="true">App Store – soon</a>
           <a class="btn-ghost" href="beyond-rent-privacy.html">Privacy Policy</a>
@@ -643,7 +655,6 @@
         <div>
           <div class="phone-frame">
             <div class="phone-screen">
-              <!-- main tenant dashboard screenshot -->
               <img src="assets/images/apps/beyond-rent-main.png" alt="Beyond Rent tenant dashboard">
             </div>
           </div>
@@ -673,6 +684,14 @@
       <p class="privacy-note">
         For details on how Beyond Rent handles data, see the
         <a href="beyond-rent-privacy.html">Beyond Rent Privacy Policy</a>.
+      </p>
+
+      <!-- NEW: Data deletion note -->
+      <p class="deletion-note">
+        <strong>Data deletion request:</strong>
+        Beyond Rent users may request deletion of their account data at any time.
+        To submit a deletion request, please contact us through the
+        <a href="contact.html">Beyond Limit contact page</a>.
       </p>
     </section>
 
