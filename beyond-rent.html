@@ -189,10 +189,12 @@
       pointer-events: none;
     }
 
+    /* make the logo look like a real app icon (squircle) */
     .app-logo-circle img {
-      width: 70%;
-      height: 70%;
+      width: 72%;
+      height: 72%;
       object-fit: contain;
+      border-radius: 26%; /* squircle feel */
       z-index: 1;
     }
 
@@ -281,7 +283,7 @@
       transform: translateY(-1px);
     }
 
-    /* HERO RIGHT SIDE: SIMPLE INFO LIST */
+    /* HERO RIGHT SIDE: INFO LIST */
     .app-summary-box {
       border-radius: 20px;
       border: 1px solid rgba(255,255,255,0.16);
@@ -342,9 +344,11 @@
 
     .screenshots-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.2fr);
-      gap: 18px;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.2fr);
+      gap: 24px;
       align-items: flex-start;
+      max-width: 900px;
+      margin: 0 auto;
     }
 
     @media (max-width: 900px) {
@@ -353,75 +357,117 @@
       }
     }
 
-    .main-shot {
-      position: relative;
-      border-radius: 22px;
-      overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.18);
-      background: rgba(0,0,0,0.7);
-      min-height: 220px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
-
-    .main-shot img {
+    /* FULL PHONE MOCKUP */
+    .phone-frame {
       width: 100%;
-      height: auto;
-      object-fit: cover;
-      display: block;
-    }
-
-    .main-shot-overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(
-        to bottom right,
-        rgba(186,147,69,0.2),
-        rgba(0,0,0,0.75)
-      );
-      mix-blend-mode: soft-light;
-      pointer-events: none;
-    }
-
-    .main-shot-label {
-      position: absolute;
-      left: 12px;
-      bottom: 12px;
-      font-size: 0.7rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-      background: rgba(0,0,0,0.65);
-      border-radius: 999px;
-      padding: 4px 10px;
-      border: 1px solid rgba(255,255,255,0.25);
-    }
-
-    .thumb-column {
+      max-width: 320px;
+      aspect-ratio: 9 / 19.5;
+      border-radius: 34px;
+      background: #000;
+      padding: 10px 8px 14px;
+      box-shadow: 0 18px 40px rgba(0,0,0,0.8);
+      position: relative;
+      margin: 0 auto;
       display: flex;
-      flex-direction: column;
-      gap: 10px;
+      justify-content: center;
+      align-items: stretch;
     }
 
-    .thumb {
-      border-radius: 16px;
+    .phone-frame::before {
+      /* top speaker / camera bar */
+      content: "";
+      position: absolute;
+      top: 8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 64px;
+      height: 4px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.2);
+      opacity: 0.7;
+    }
+
+    .phone-screen {
+      width: 100%;
+      border-radius: 24px;
       overflow: hidden;
-      border: 1px solid rgba(255,255,255,0.16);
-      background: rgba(0,0,0,0.7);
-      min-height: 80px;
+      background: #111;
+      display: flex;
     }
 
-    .thumb img {
+    .phone-screen img {
       width: 100%;
       height: 100%;
       object-fit: cover;
       display: block;
     }
 
+    /* smaller phone variants on the right */
+    .thumb-column {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      align-items: center;
+    }
+
+    .phone-frame-small {
+      width: 100%;
+      max-width: 210px;
+      aspect-ratio: 9 / 19.5;
+      border-radius: 30px;
+      background: #000;
+      padding: 8px 6px 12px;
+      box-shadow: 0 14px 30px rgba(0,0,0,0.7);
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: stretch;
+    }
+
+    .phone-frame-small::before {
+      content: "";
+      position: absolute;
+      top: 7px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 52px;
+      height: 3px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.2);
+      opacity: 0.7;
+    }
+
+    .phone-screen-small {
+      width: 100%;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #111;
+      display: flex;
+    }
+
+    .phone-screen-small img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .main-shot-label {
+      text-align: center;
+      font-size: 0.74rem;
+      color: rgba(255,255,255,0.75);
+      margin-top: 8px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+    }
+
     .privacy-note {
       margin-top: 18px;
       font-size: 0.82rem;
       color: rgba(255,255,255,0.75);
+      max-width: 900px;
+      margin-left: auto;
+      margin-right: auto;
     }
 
     .privacy-note a {
@@ -534,6 +580,7 @@
       <div>
         <div class="app-identity">
           <div class="app-logo-circle">
+            <!-- update this with your real Beyond Rent icon -->
             <img src="assets/images/apps/beyond-rent-logo.png" alt="Beyond Rent logo">
           </div>
           <div class="app-identity-text">
@@ -548,8 +595,8 @@
 
         <p class="app-description">
           Beyond Rent brings rent information into one place. Tenants see what they owe and what they’ve
-          already paid. Admins and owners see all units and properties together — without chasing screenshots
-          or updating manual spreadsheets.
+          already paid. Admins and owners see all units and properties together — without chasing
+          screenshots or updating manual spreadsheets.
         </p>
 
         <p class="app-meta">
@@ -593,23 +640,33 @@
       <div class="screenshots-label">Screenshots</div>
 
       <div class="screenshots-layout">
-        <!-- Main screenshot -->
-        <div class="main-shot">
-          <img src="assets/images/apps/beyond-rent-main.png" alt="Beyond Rent main screen">
-          <div class="main-shot-overlay"></div>
-          <div class="main-shot-label">Tenant dashboard concept</div>
+        <!-- Main phone (left) -->
+        <div>
+          <div class="phone-frame">
+            <div class="phone-screen">
+              <!-- main tenant dashboard screenshot -->
+              <img src="assets/images/apps/beyond-rent-main.png" alt="Beyond Rent tenant dashboard">
+            </div>
+          </div>
+          <div class="main-shot-label">Tenant dashboard</div>
         </div>
 
-        <!-- Small screenshots -->
+        <!-- Smaller phones (right column) -->
         <div class="thumb-column">
-          <div class="thumb">
-            <img src="assets/images/apps/beyond-rent-screen-1.png" alt="Beyond Rent admin view">
+          <div class="phone-frame-small">
+            <div class="phone-screen-small">
+              <img src="assets/images/apps/beyond-rent-screen-1.png" alt="Beyond Rent admin overview">
+            </div>
           </div>
-          <div class="thumb">
-            <img src="assets/images/apps/beyond-rent-screen-2.png" alt="Beyond Rent owner summary">
+          <div class="phone-frame-small">
+            <div class="phone-screen-small">
+              <img src="assets/images/apps/beyond-rent-screen-2.png" alt="Beyond Rent owner summary">
+            </div>
           </div>
-          <div class="thumb">
-            <img src="assets/images/apps/beyond-rent-screen-3.png" alt="Beyond Rent rent details">
+          <div class="phone-frame-small">
+            <div class="phone-screen-small">
+              <img src="assets/images/apps/beyond-rent-screen-3.png" alt="Beyond Rent rent details">
+            </div>
           </div>
         </div>
       </div>
@@ -618,20 +675,6 @@
         For details on how Beyond Rent handles data, see the
         <a href="beyond-rent-privacy.html">Beyond Rent Privacy Policy</a>.
       </p>
-
-      <!-- ✅ NEW: account & data deletion instructions -->
-      <p class="privacy-note" id="data-deletion">
-        <strong>Account &amp; data deletion.</strong>
-        If you would like your Beyond Rent account and associated data to be deleted,
-        please submit a request through the
-        <a href="contact.html#beyond-rent" target="_blank" rel="noopener">Beyond Limit contact page</a>
-        and mention “Beyond Rent – data deletion” in your message.  
-        Our team will verify your identity (usually using your registered phone number and unit)
-        and then delete or anonymise your tenant profile and rent records that we are not legally
-        required to retain for accounting or regulatory purposes.  
-        After your request is completed, you will no longer be able to sign in to the app.
-      </p>
-      <!-- end new block -->
     </section>
 
     <footer>
