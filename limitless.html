@@ -304,6 +304,7 @@
       width: 72%;
       height: 72%;
       object-fit: contain;
+      border-radius: 26%; /* squircle feel */
       z-index: 1;
     }
 
@@ -319,6 +320,44 @@
       color: rgba(255,255,255,0.7);
       text-transform: uppercase;
       letter-spacing: 0.14em;
+    }
+
+    /* === Animated placeholder icon for future apps === */
+    .placeholder-glow-circle {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background:
+        radial-gradient(circle at 30% 0%, rgba(249,227,163,0.9), rgba(186,147,69,0.9)),
+        radial-gradient(circle at center, rgba(0,0,0,0.85), rgba(0,0,0,1));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      border: 2px solid rgba(255,255,255,0.15);
+      overflow: hidden;
+      animation: haloPulse 4s ease-in-out infinite;
+    }
+
+    .placeholder-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.88);
+      box-shadow: 0 0 8px rgba(255,255,255,0.65);
+      animation: dotPulse 2.8s ease-in-out infinite;
+    }
+
+    @keyframes haloPulse {
+      0%   { box-shadow: 0 0 14px rgba(186,147,69,0.3); }
+      50%  { box-shadow: 0 0 26px rgba(186,147,69,0.55); }
+      100% { box-shadow: 0 0 14px rgba(186,147,69,0.3); }
+    }
+
+    @keyframes dotPulse {
+      0%   { transform: scale(1);    opacity: 0.9; }
+      50%  { transform: scale(1.22); opacity: 1;   }
+      100% { transform: scale(1);    opacity: 0.9; }
     }
 
     @media (max-width: 600px) {
@@ -382,17 +421,17 @@
 
           <!-- Future app placeholder -->
           <a class="app-logo-item" href="#">
-            <div class="app-logo-circle">
-              <img src="assets/images/apps/placeholder.png" alt="Future app">
+            <div class="placeholder-glow-circle">
+              <div class="placeholder-dot"></div>
             </div>
             <div class="app-logo-name">Future app</div>
             <div class="app-logo-tag">Coming soon</div>
           </a>
 
-          <!-- Another placeholder if you want -->
+          <!-- Another placeholder -->
           <a class="app-logo-item" href="#">
-            <div class="app-logo-circle">
-              <img src="assets/images/apps/placeholder.png" alt="Future app">
+            <div class="placeholder-glow-circle">
+              <div class="placeholder-dot"></div>
             </div>
             <div class="app-logo-name">Reserved</div>
             <div class="app-logo-tag">To be announced</div>
