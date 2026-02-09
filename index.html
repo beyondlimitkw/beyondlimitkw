@@ -225,8 +225,21 @@
   <script>
     // Fullpage-style scroll: one wheel/touch step = one section
     const sections = Array.from(document.querySelectorAll('.snap-section'));
+    const homeNavLink = document.querySelector('a[href="#hero"]');
+    const aboutNavLink = document.querySelector('a[href="#about"]');
     let currentIndex = 0;
     let isScrolling = false;
+
+    function syncSectionUI(index) {
+      const section = sections[index];
+      if (!section) return;
+      homeNavLink?.classList.toggle('active', section.id === 'hero');
+      aboutNavLink?.classList.toggle('active', section.id === 'about');
+      const hash = `#${section.id}`;
+      if (window.location.hash !== hash) {
+        history.replaceState(null, '', hash);
+      }
+    }
 
     function scrollToSection(index) {
       const target = sections[index];
@@ -239,6 +252,7 @@
       });
       setTimeout(() => {
         currentIndex = index;
+        syncSectionUI(currentIndex);
         isScrolling = false;
       }, 700);
     }
@@ -299,19 +313,23 @@
     }, { passive: true });
 
     // Nav links (Home & About) keep JS index in sync
-    document.querySelector('a[href="#hero"]')?.addEventListener('click', (e) => {
+    homeNavLink?.addEventListener('click', (e) => {
       e.preventDefault();
       scrollToSection(0);
     });
 
-    document.querySelector('a[href="#about"]')?.addEventListener('click', (e) => {
+    aboutNavLink?.addEventListener('click', (e) => {
       e.preventDefault();
       const targetIndex = sections.findIndex(s => s.id === 'about');
       if (targetIndex !== -1) scrollToSection(targetIndex);
     });
 
-    // Initialize to the first section on load
-    window.scrollTo(0, 0);
+    // Initialize from URL hash if provided, otherwise default to hero
+    const initialHash = window.location.hash;
+    const initialIndex = sections.findIndex(s => `#${s.id}` === initialHash);
+    currentIndex = initialIndex >= 0 ? initialIndex : 0;
+    window.scrollTo(0, sections[currentIndex].offsetTop);
+    syncSectionUI(currentIndex);
   </script>
 </body>
 </html>
