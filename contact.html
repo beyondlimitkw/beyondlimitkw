@@ -1,9 +1,9 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contact – Beyond Limit</title>
+  <title>Contact &ndash; Beyond Limit</title>
   <link rel="icon" type="image/svg+xml" href="assets/images/logos/beyondlimit-icon.svg" />
   <link rel="stylesheet" href="assets/css/nav.css" />
 
@@ -15,35 +15,13 @@
     }
 
     body {
-      font-family: 'Poppins', sans-serif;
-      background:
-        radial-gradient(64% 42% at 88% 0%, rgba(186,147,69,0.18), transparent 60%),
-        linear-gradient(160deg, #2f2c29 0%, #373431 36%, #24212b 100%);
+      font-family: "Segoe UI", sans-serif;
+      background: #2f2d31;
       color: #fff;
       overflow-x: hidden;
       overflow-y: auto;
       position: relative;
       min-height: 100vh;
-    }
-
-    /* Background lines */
-    body::before {
-      content: "";
-      position: fixed; inset: 0;
-      background: repeating-linear-gradient(
-        -45deg,
-        rgba(186,147,69,0.05) 0px,
-        rgba(186,147,69,0.05) 1px,
-        transparent 1px,
-        transparent 118px
-      );
-      animation: moveLines 70s linear infinite;
-      opacity: 0.25;
-      z-index: -1;
-    }
-    @keyframes moveLines {
-      0% { background-position: 0 0; }
-      100% { background-position: 620px 620px; }
     }
 
     /* CONTACT PAGE LAYOUT */
@@ -192,7 +170,7 @@
 
     .btn-gold:hover {
       background: #d4af55;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.45);
+
       transform: translateY(-1px);
     }
 
@@ -220,20 +198,6 @@
       display: flex;
       justify-content: flex-end;
       box-sizing: border-box;
-    }
-
-    /* diagonal gold accent coming from the right */
-    footer::before {
-      content: "";
-      position: absolute;
-      right: 32px;
-      top: 4px;
-      width: 140px;
-      height: 1px;
-      background: linear-gradient(to left, #ba9345, transparent);
-      opacity: 0.7;
-      transform: rotate(-3deg);
-      transform-origin: right center;
     }
 
     .footer-main {
@@ -269,30 +233,24 @@
       font-size: 0.7rem;
       text-decoration: none;
       color: #ba9345;
-      background: rgba(0, 0, 0, 0.35);
-      backdrop-filter: blur(6px);
-      transition: transform 0.15s ease, background 0.15s ease, box-shadow 0.15s ease;
+      background: rgba(0, 0, 0, 0.15);
+      transition: transform 0.15s ease, background 0.15s ease;
     }
 
     .footer-social a:hover {
       background: rgba(186,147,69,0.2);
-      box-shadow: 0 0 12px rgba(186,147,69,0.45);
+
       transform: translateY(-1px);
     }
 
     .footer-social a:active {
       transform: translateY(0);
-      box-shadow: none;
+
     }
 
     @media (max-width: 600px) {
       footer {
         padding: 18px 20px 22px;
-      }
-
-      footer::before {
-        right: 20px;
-        width: 110px;
       }
 
       .footer-main {
@@ -319,7 +277,7 @@
       <h1 class="contact-title">Contact Beyond Limit</h1>
       <p class="contact-text">
         For property management, rent visibility or building operations,
-        reach out and we’ll get back to you as soon as possible.
+        reach out and we&rsquo;ll get back to you as soon as possible.
       </p>
 
       <div class="contact-grid">
@@ -372,7 +330,7 @@
         </div>
 
         <div id="formSuccess" class="form-message form-success">
-          Thank you — your message has been sent.
+          Thank you &mdash; your message has been sent.
         </div>
         <div id="formError" class="form-message form-error">
           Something went wrong. Please try again.
@@ -383,7 +341,7 @@
 
   <footer>
     <div class="footer-main">
-      © 2025 Beyond Limit
+        &copy; 2025 Beyond Limit
       <span>Managing Properties, Maximizing Value</span>
       <div class="footer-social">
         <a href="https://instagram.com/beyondlimitkw" target="_blank" rel="noopener" aria-label="Beyond Limit Instagram">IG</a>
@@ -422,3 +380,4 @@
   </script>
 </body>
 </html>
+

@@ -6,9 +6,6 @@
   <title>Limitless Lab - Beyond Limit</title>
   <link rel="icon" type="image/svg+xml" href="assets/images/logos/beyondlimit-icon.svg" />
   <link rel="stylesheet" href="assets/css/nav.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Sora:wght@600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
@@ -25,29 +22,11 @@
     html, body { min-height: 100%; }
 
     body {
-      font-family: "Manrope", "Segoe UI", sans-serif;
+      font-family: "Segoe UI", sans-serif;
       color: var(--text);
-      background:
-        radial-gradient(64% 42% at 88% 0%, rgba(186,147,69,0.18), transparent 60%),
-        linear-gradient(160deg, #2f2c29 0%, #373431 36%, #24212b 100%);
+      background: #2f2d31;
       overflow-x: hidden;
       position: relative;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background: repeating-linear-gradient(-45deg, rgba(186,147,69,0.05) 0, rgba(186,147,69,0.05) 1px, transparent 1px, transparent 118px);
-      opacity: 0.25;
-      pointer-events: none;
-      z-index: -1;
-      animation: drift 70s linear infinite;
-    }
-
-    @keyframes drift {
-      from { background-position: 0 0; }
-      to { background-position: 620px 620px; }
     }
 
     main {
@@ -76,11 +55,11 @@
     .logo-frame img {
       width: min(520px, 100%);
       display: block;
-      filter: drop-shadow(0 16px 28px rgba(0,0,0,0.36));
+      filter: none;
     }
 
     .intro-copy h1 {
-      font-family: "Sora", "Manrope", sans-serif;
+      font-family: "Segoe UI", sans-serif;
       font-size: clamp(1.9rem, 5vw, 2.8rem);
       line-height: 1.14;
       margin-bottom: 12px;
@@ -254,3 +233,4 @@
   </main>
 </body>
 </html>
+
