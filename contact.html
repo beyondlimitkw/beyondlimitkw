@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Contact – Beyond Limit</title>
   <link rel="icon" type="image/svg+xml" href="assets/images/logos/beyondlimit-icon.svg" />
+  <link rel="stylesheet" href="assets/css/nav.css" />
 
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -15,7 +16,9 @@
 
     body {
       font-family: 'Poppins', sans-serif;
-      background: #373431;
+      background:
+        radial-gradient(64% 42% at 88% 0%, rgba(186,147,69,0.18), transparent 60%),
+        linear-gradient(160deg, #2f2c29 0%, #373431 36%, #24212b 100%);
       color: #fff;
       overflow-x: hidden;
       overflow-y: auto;
@@ -32,118 +35,15 @@
         rgba(186,147,69,0.05) 0px,
         rgba(186,147,69,0.05) 1px,
         transparent 1px,
-        transparent 120px
+        transparent 118px
       );
-      animation: moveLines 80s linear infinite;
+      animation: moveLines 70s linear infinite;
       opacity: 0.25;
       z-index: -1;
     }
     @keyframes moveLines {
       0% { background-position: 0 0; }
-      100% { background-position: 600px 600px; }
-    }
-
-    /* === LEFT VERTICAL NAVBAR (same as index) === */
-    .side-nav {
-      position: fixed;
-      left: 26px;
-      top: 50%;
-      transform: translateY(-50%);
-      display: flex;
-      flex-direction: column;
-      gap: 18px;
-      z-index: 100;
-      font-size: 0.75rem;
-      text-transform: uppercase;
-      letter-spacing: 0.16em;
-    }
-
-    .side-nav::before {
-      content: "";
-      position: absolute;
-      left: -10px;
-      top: 0;
-      bottom: 0;
-      width: 1px;
-      background: linear-gradient(
-        to bottom,
-        rgba(186,147,69,0),
-        rgba(186,147,69,0.8),
-        rgba(186,147,69,0)
-      );
-      opacity: 0.7;
-    }
-
-    .side-nav-brand {
-      color: #fff;
-      font-weight: 500;
-      margin-bottom: 8px;
-      opacity: 0.9;
-    }
-
-    .side-nav-brand span {
-      color: #ba9345;
-    }
-
-    .side-nav a {
-      color: #bfbfbf;
-      text-decoration: none;
-      position: relative;
-      padding-left: 2px;
-      transition: color 0.2s ease, transform 0.2s ease;
-    }
-
-    .side-nav a::after {
-      content: "";
-      position: absolute;
-      left: -6px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 4px;
-      height: 4px;
-      border-radius: 50%;
-      background: transparent;
-      transition: background 0.2s ease, transform 0.2s ease;
-    }
-
-    .side-nav a:hover {
-      color: #ffffff;
-      transform: translateX(3px);
-    }
-
-    .side-nav a:hover::after {
-      background: #ba9345;
-      transform: translateY(-50%) scale(1.2);
-    }
-
-    .side-nav a.active {
-      color: #ffffff;
-    }
-    .side-nav a.active::after {
-      background: #ba9345;
-    }
-
-    @media (max-width: 768px) {
-      .side-nav {
-        top: 18px;
-        left: 50%;
-        transform: translateX(-50%);
-        flex-direction: row;
-        align-items: center;
-        gap: 14px;
-        background: rgba(0,0,0,0.35);
-        padding: 8px 14px;
-        border-radius: 999px;
-        backdrop-filter: blur(10px);
-      }
-
-      .side-nav::before {
-        display: none;
-      }
-
-      .side-nav-brand {
-        display: none;
-      }
+      100% { background-position: 620px 620px; }
     }
 
     /* CONTACT PAGE LAYOUT */
@@ -410,7 +310,7 @@
     <a href="index.html#about">About</a>
     <a href="limitless.html">Limitless Lab</a>
     <a class="active" href="#contact" class="active">Contact</a>
-    <a href="https://beyondlimitnas.tail7b7958.ts.net/" target="_blank">Admin</a>
+    <a href="https://beyondlimit.sg3.quickconnect.to/#/signin" target="_blank">Admin</a>
   </div>
 
   <main class="contact-page" id="contact">

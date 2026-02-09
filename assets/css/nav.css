@@ -1,0 +1,95 @@
+.side-nav {
+  position: fixed;
+  left: 26px;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  z-index: 100;
+  font-family: "Poppins", "Segoe UI", sans-serif;
+  font-size: 0.75rem;
+  line-height: 1;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.side-nav::before {
+  content: "";
+  position: absolute;
+  left: -10px;
+  top: 0;
+  bottom: 0;
+  width: 1px;
+  background: linear-gradient(
+    to bottom,
+    rgba(186, 147, 69, 0),
+    rgba(186, 147, 69, 0.8),
+    rgba(186, 147, 69, 0)
+  );
+  opacity: 0.7;
+}
+
+.side-nav-brand {
+  color: #fff;
+  font-weight: 500;
+  margin-bottom: 8px;
+  opacity: 0.9;
+}
+
+.side-nav-brand span {
+  color: #ba9345;
+}
+
+.side-nav a {
+  color: #bfbfbf;
+  text-decoration: none;
+  position: relative;
+  white-space: nowrap;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.side-nav a::after {
+  content: "";
+  position: absolute;
+  left: -8px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: transparent;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.side-nav a:hover,
+.side-nav a.active {
+  color: #fff;
+  transform: translateX(2px);
+}
+
+.side-nav a:hover::after,
+.side-nav a.active::after {
+  background: #ba9345;
+}
+
+@media (max-width: 768px) {
+  .side-nav {
+    top: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    gap: 14px;
+    background: rgba(0, 0, 0, 0.35);
+    padding: 8px 14px;
+    border-radius: 999px;
+    backdrop-filter: blur(10px);
+  }
+
+  .side-nav::before,
+  .side-nav-brand {
+    display: none;
+  }
+}
