@@ -312,7 +312,37 @@
     .lab-footer-links { display: flex; align-items: center; gap: 9px; }
     .lab-footer-links a { width: 27px; height: 27px; border-radius: 50%; border: 1px solid rgba(186,147,69,.8); color: #d9b462; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; font-size: .68rem; background: rgba(186,147,69,.12); }
     @media(max-width: 620px){ .lab-footer { flex-direction: column; align-items: flex-start; } }
-  </style>
+  
+    /* Match the compact tab-button appearance on Limitless Signage. */
+    .actions .btn, .actions .btn-ghost {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font: inherit;
+      font-size: .8rem;
+      font-weight: 400;
+      letter-spacing: normal;
+      text-transform: none;
+      white-space: nowrap;
+      color: #bbb9be;
+      background: transparent;
+      border: 1px solid transparent;
+      border-radius: 5px;
+      padding: 9px 13px;
+      text-decoration: none;
+      box-shadow: none;
+      transform: none;
+      cursor: pointer;
+      transition: color .16s ease, background .16s ease, border-color .16s ease;
+    }
+    .actions .btn:hover, .actions .btn:focus-visible, .actions .btn-ghost:hover, .actions .btn-ghost:focus-visible {
+      color: #d9b462;
+      background: #d9b46212;
+      border-color: rgba(186,147,69,.3);
+      box-shadow: none;
+      transform: none;
+    }
+</style>
 </head>
 <body>
 
