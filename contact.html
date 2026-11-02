@@ -365,7 +365,7 @@
 
   <footer>
     <div class="footer-main">
-        &copy; 2025 Beyond Limit
+        &copy; <span class="copyright-years">2025&ndash;2026</span> Beyond Limit
       <span>Managing Properties, Maximizing Value</span>
       <div class="footer-social">
         <a href="https://instagram.com/beyondlimitkw" target="_blank" rel="noopener" aria-label="Beyond Limit Instagram">IG</a>
@@ -400,6 +400,12 @@
       } catch (err) {
         errorMsg.style.display = "block";
       }
+    });
+  </script>
+<script>
+    document.querySelectorAll('.copyright-years').forEach(el => {
+      const year = new Date().getFullYear();
+      el.textContent = year > 2025 ? '2025–' + year : '2025';
     });
   </script>
 </body>
