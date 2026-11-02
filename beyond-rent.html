@@ -304,6 +304,11 @@
         align-items: flex-start;
       }
     }
+  
+    .lab-footer { border-top: 1px solid rgba(186,147,69,.28); padding-top: 18px; display: flex; justify-content: space-between; align-items: center; gap: 14px; color: rgba(243,244,246,.76); font-size: .82rem; }
+    .lab-footer-links { display: flex; align-items: center; gap: 9px; }
+    .lab-footer-links a { width: 27px; height: 27px; border-radius: 50%; border: 1px solid rgba(186,147,69,.8); color: #d9b462; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; font-size: .68rem; background: rgba(186,147,69,.12); }
+    @media(max-width: 620px){ .lab-footer { flex-direction: column; align-items: flex-start; } }
   </style>
 </head>
 <body>
@@ -392,13 +397,9 @@
       </p>
     </section>
 
-    <footer>
-      <div>&copy; 2025 Beyond Limit</div>
-      <div class="footer-right">
-        <span>Limitless Lab</span>
-        <a href="https://instagram.com/beyondlimitkw" target="_blank" rel="noopener" aria-label="Beyond Limit Instagram">IG</a>
-        <a href="https://wa.me/96599818992" target="_blank" rel="noopener" aria-label="WhatsApp Beyond Limit">WA</a>
-      </div>
+    <footer class="lab-footer">
+      <span>&copy; 2025&ndash;2026 Beyond Limit</span>
+      <div class="lab-footer-links"><span>Limitless Lab</span><a href="https://instagram.com/beyondlimitkw" target="_blank" rel="noopener" aria-label="Beyond Limit Instagram">IG</a><a href="https://wa.me/96599818992" target="_blank" rel="noopener" aria-label="WhatsApp Beyond Limit">WA</a></div>
     </footer>
   </main>
 </body>
