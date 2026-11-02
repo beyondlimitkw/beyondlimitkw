@@ -121,10 +121,7 @@
         <li><h3>Show them on your screen</h3><p>Open the screen’s link in a compatible browser on your display device. Your advertisements play one after another and repeat. Update them from the dashboard whenever you need to.</p></li>
       </ol>
     </section>
-    <footer class="lab-footer">
-      <span>&copy; 2025&ndash;2026 Beyond Limit</span>
-      <div class="lab-footer-links"><span>Limitless Lab</span><a href="https://instagram.com/beyondlimitkw" target="_blank" rel="noopener" aria-label="Beyond Limit Instagram">IG</a><a href="https://wa.me/96599818992" target="_blank" rel="noopener" aria-label="WhatsApp Beyond Limit">WA</a></div>
-    </footer>
+    <footer class="lab-footer"><span>&copy; <span class="copyright-years">2025&ndash;2026</span> Beyond Limit</span><a href="limitless.html">Explore Limitless Lab</a></footer>
   </main>
   <script>
     const views = {
@@ -150,5 +147,6 @@
       });
     });
   </script>
+<script>document.querySelectorAll('.copyright-years').forEach(el => { const y = new Date().getFullYear(); el.textContent = y > 2025 ? '2025–' + y : '2025'; });</script>
 </body>
 </html>
