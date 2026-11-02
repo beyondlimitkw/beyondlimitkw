@@ -283,34 +283,37 @@
       }
     }
   
-    /* Match the compact tab-button appearance on Limitless Signage. */
+    /* Form action: matches Beyond Rent's visible action-link buttons. */
     .btn-gold {
       display: inline-flex;
       align-items: center;
       justify-content: center;
+      min-height: 44px;
+      padding: 11px 20px;
       font: inherit;
-      font-size: .8rem;
-      font-weight: 400;
-      letter-spacing: normal;
+      font-size: .85rem;
+      font-weight: 600;
+      letter-spacing: .015em;
       text-transform: none;
       white-space: nowrap;
-      color: #bbb9be;
-      background: transparent;
-      border: 1px solid transparent;
-      border-radius: 5px;
-      padding: 9px 13px;
+      color: #eee9dc;
+      background: rgba(217,180,98,.10);
+      border: 1px solid rgba(217,180,98,.70);
+      border-radius: 7px;
       text-decoration: none;
       box-shadow: none;
-      transform: none;
       cursor: pointer;
       transition: color .16s ease, background .16s ease, border-color .16s ease;
     }
     .btn-gold:hover, .btn-gold:focus-visible {
-      color: #d9b462;
-      background: #d9b46212;
-      border-color: rgba(186,147,69,.3);
-      box-shadow: none;
-      transform: none;
+      color: #161514;
+      background: #d9b462;
+      border-color: #d9b462;
+      text-decoration: none;
+    }
+    .btn-gold:focus-visible {
+      outline: 2px solid #f7df9b;
+      outline-offset: 3px;
     }
 </style>
 </head>
